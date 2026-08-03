@@ -108,8 +108,10 @@ extract_one_file() {
       return h * 60 + m
     }
     function short_loc(s) {
-      if (index(s, "Riverside") > 0) return "Riverside CC"
-      if (index(s, "Lakeview") > 0) return "Lakeview CC"
+      # PlugEV names a site "Sitename - 123 Some Street", so the rule below
+      # keeps the part before the dash. To label a site you use often with
+      # something else, add a line above it, e.g.
+      #   if (index(s, "Riverside") > 0) return "Riverside CC"
       if (index(s, " - ") > 0) return substr(s, 1, index(s, " - ") - 1)
       return s
     }
